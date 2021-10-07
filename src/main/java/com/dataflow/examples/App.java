@@ -44,15 +44,15 @@ public class App
 //----------------------------------------------------------------------
     	// Transform Function - PARDO example
     	
-		  pipeline.apply(Create.of(LINES)).setCoder(StringUtf8Coder.of())
+/*		  pipeline.apply(Create.of(LINES)).setCoder(StringUtf8Coder.of())
 		  .apply("Print before transformation: ", ParDo.of(new PrintToConsoleFn()))
 		  .apply(ParDo.of(new ExtractPaymentTypeFn()))
-		  .apply("Print after transformation: ", ParDo.of(new PrintToConsoleFn()));   
+		  .apply("Print after transformation: ", ParDo.of(new PrintToConsoleFn()));   */
 //----------------------------------------------------------------------		 
 		  
 //----------------------------------------------------------------------		  
     	// Transform Function - MapElements/Flatelement example
-/*		  pipeline.apply(Create.of(LINES)).setCoder(StringUtf8Coder.of())
+		  pipeline.apply(Create.of(LINES)).setCoder(StringUtf8Coder.of())
 		  .apply("Print before transformation: ", MapElements.via(new SimpleFunction<String, String>() {
 			  
 			  @Override
@@ -64,12 +64,12 @@ public class App
 		}))
 		  .apply("Print after transformation: ", FlatMapElements.into(TypeDescriptors.strings())
 				  .via(line -> Collections.singleton(line.split(",")[3])))
-		  .apply(ParDo.of(new PrintToConsoleFn()));*/
+		  .apply(ParDo.of(new PrintToConsoleFn()));   
 //----------------------------------------------------------------------		  
 
-//----------------------------------------------------------------------	
+//----------------------------------------------------------------------	*/
     	//Count.perElement() example
-   /* 	pipeline.apply(Create.of(LINES)).setCoder(StringUtf8Coder.of())
+    	pipeline.apply(Create.of(LINES)).setCoder(StringUtf8Coder.of())
 		  .apply("Print before transformation: ", ParDo.of(new PrintToConsoleFn()))
 		  .apply("Extract Payment Types: ", FlatMapElements.into(TypeDescriptors.strings())
 				  .via(line -> Collections.singleton(line.split(",")[3])))
@@ -77,7 +77,7 @@ public class App
 		  .apply("Format output: ", MapElements
 				  .into(TypeDescriptors.strings())
 				  .via(hm -> hm.getKey() + ":" + hm.getValue()))
-		  .apply("printextracted output: ", ParDo.of(new PrintToConsoleFn())); */
+		  .apply("printextracted output: ", ParDo.of(new PrintToConsoleFn()));
     	
 //----------------------------------------------------------------------	    	
 		  pipeline.run().waitUntilFinish();
